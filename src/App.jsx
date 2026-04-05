@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Slideshow from './components/Slideshow'
@@ -89,7 +89,7 @@ function App() {
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
-    <BrowserRouter basename="/frontend-ffotball-store">
+    <HashRouter >
       {showCookie && (
         <div className="cookie-banner">
           <span>We use cookies for better user experience and analytics. By using our site, you agree to our policies.</span>
@@ -134,7 +134,7 @@ function App() {
         cart={cart}
         onRemove={removeFromCart}
       />
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
