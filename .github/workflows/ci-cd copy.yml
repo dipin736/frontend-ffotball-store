@@ -1,0 +1,72 @@
+# name: Deploy to Netlify
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build_and_deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22.13.1
+
+#       - name: Install dependencies
+#         run: npm ci
+
+#       - name: Build
+#         run: npm run build
+
+#       - name: Deploy to Netlify
+#         uses: nwtgck/actions-netlify@v3.0
+#         with:
+#           publish-dir: ./dist
+#           production-branch: main
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           deploy-message: "Deploy from GitHub Actions"
+#           enable-pull-request-comment: false
+#           enable-commit-comment: false
+#           overwrites-pull-request-comment: false
+#         env:
+#           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+#           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+
+# For Netlify you do not need HashRouter. Switch back to BrowserRouter, because Netlify supports route fallback.
+
+# Update your router back to: 
+
+# import { BrowserRouter } from 'react-router-dom'
+
+# <BrowserRouter>
+#   ...
+# </BrowserRouter>
+
+
+# Remove the basename unless you deploy under a subfolder:
+
+# <BrowserRouter>
+
+# Update vite.config.js:
+
+# export default defineConfig({
+#   plugins: [react()],
+#   base: '/',
+# })
+
+# Create a file at:
+
+# public/_redirects
+
+# with:
+
+# /*    /index.html   200
+
+# This ensures refreshing /wishlist or /cart still loads your React app on Netlify.
