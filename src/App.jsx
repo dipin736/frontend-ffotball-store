@@ -89,7 +89,7 @@ function App() {
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/frontend-ffotball-store">
       {showCookie && (
         <div className="cookie-banner">
           <span>We use cookies for better user experience and analytics. By using our site, you agree to our policies.</span>
